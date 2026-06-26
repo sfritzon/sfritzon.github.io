@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game Portfolio</title>
+  <title>Game Programming Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -591,7 +591,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">YourName</a>
+    <a href="#" class="nav-logo">Sara Fritzon</a>
     <ul class="nav-links">
       <li><a href="#projects">Games</a></li>
       <li><a href="#education">About</a></li>
@@ -601,18 +601,17 @@
 
   <!-- HERO -->
   <section class="hero">
-    <p class="hero-eyebrow">Game Developer · Designer</p>
+    <p class="hero-eyebrow">Game Programmer</p>
     <h1 class="hero-title">
       I Build<br />
       <span>Games</span>
     </h1>
     <p class="hero-subtitle">
-      Indie game developer with a passion for interactive experiences.
-      Scroll down to explore my work.
+      I am a game programming student with a passion for building flexible systems and tools for designers. I bring the 18+ years of AV/video and live event production experience I have with me when thinking of solutions to gameplay, game systems and programming. 
     </p>
     <div class="hero-scroll">
       <span class="hero-scroll-line"></span>
-      Scroll to explore
+      Scroll to explore to explore my work
     </div>
   </section>
 
@@ -653,20 +652,21 @@
       </div>
       <div class="project-info">
         <span class="project-number">01</span>
-        <h2 class="project-title">Project Title One</h2>
+        <h2 class="project-title">Zomlib Madness</h2>
         <p class="project-about">
-          A short paragraph about what the game is, its concept, and what makes it interesting.
-          What was the creative direction? Who is it for?
+          A vampire-survivor-like game where you fight against small round Zombies and bigger Tanks before time runs out. An ongoing project.
         </p>
         <p class="project-details">
-          Built over 3 months as a solo project. Features procedurally generated levels, a custom
-          physics system, and original soundtrack. Released on itch.io with over 1,200 downloads.
+          Built in 1 month as part of a Design Pattern course. The game graphics drawn directly in Raylib, sound effects, background music and UI built from scratch.
+          The design patterns I chose to feature are State Patterns and Singleton Patterns. 
+                                                                                                                                                                                  
         </p>
         <div class="tags">
-          <span class="tag tag-engine">Unity</span>
-          <span class="tag tag-language">C#</span>
-          <span class="tag tag-genre">Platformer</span>
+          <span class="tag tag-engine">Raylib</span>
+          <span class="tag tag-language">C++</span>
+          <span class="tag tag-genre">Survivor</span>
           <span class="tag tag-genre">2D</span>
+          <a href="https://github.com/sfritzon/RaylibZombieGame.git" target="_blank" rel="noopener" class="tag tag-genre">
         </div>
       </div>
     </article>
@@ -697,25 +697,26 @@
       </div>
       <div class="project-info">
         <span class="project-number">02</span>
-        <h2 class="project-title">Project Title Two</h2>
+        <h2 class="project-title">Fred's Escape</h2>
         <p class="project-about">
-          Describe what this game does differently. What problem does it solve or
-          what experience does it create?
+          An escape room type of game where our main protagonist Fred tries to escape from a cursed mall that also happens to be his workplace. 
         </p>
         <p class="project-details">
-          A game jam entry submitted to Ludum Dare 54. Developed in 72 hours with a team of two.
-          Ranked top 15% in the Fun category.
+          Ongoing school project where I am building interaction systems and a reactive narrative trigger system with C++. Where are two system designers helping to build tools for our Blueprint programmers.
+          I also made the current audio effects, melody that plays during a puzzle solve and audio triggers. 
         </p>
         <div class="tags">
-          <span class="tag tag-engine">Godot</span>
-          <span class="tag tag-language">GDScript</span>
-          <span class="tag tag-genre">Puzzle</span>
-          <span class="tag tag-genre">Top-down</span>
+          <span class="tag tag-engine">Unreal Engine 5</span>
+          <span class="tag tag-language">C++</span>
+          <span class="tag tag-language">Blueprint</span>
+          <span class="tag tag-genre">Escape Room</span>
+          <span class="tag tag-genre">First Person</span>
+          <a href="https://github.com/Forsbergs-Skola/Freds-Escape.git" target="_blank" rel="noopener" class="tag tag-genre">
         </div>
       </div>
     </article>
 
-    <!-- ─── PROJECT 3 ─── -->
+       <!-- ─── PROJECT 3 ─── -->
     <article class="project-card fade-in">
       <div class="project-media">
         <div class="carousel" data-index="0">
@@ -747,21 +748,122 @@
       </div>
       <div class="project-info">
         <span class="project-number">03</span>
-        <h2 class="project-title">Project Title Three</h2>
+        <h2 class="project-title">Mouse Maze</h2>
         <p class="project-about">
-          A brief summary of the third project — its theme, mechanics, and what you
-          are most proud of about it.
+         This little Mouse Maze simulation was built in 1,5 months during the Algorithms and Data Structures course. It also has sorting visualizers that you can toggle between.
         </p>
         <p class="project-details">
-          Experimental narrative game exploring branching dialogue systems. All art assets
-          hand-drawn. Accepted into the university games showcase 2024.
+          Mouse Maze and Sorting Visualizer was built using C++ in Raylib with the purpose of having both in the same application and toggling between the two using a Main Menu. All the visual graphics are built directly in Raylib. 
+          The sorting algorithms used are Bubble Sort, Insertion Sort and Heap Sort and the Mouse Maze uses BFS, DFS and A+ as pathfinding alorithms. Both the Sorting Visualizer and Mouse Maze use a manager to handle the different options of algorithms and the App State
+          and AppManager handles the different states, keeping main.cpp lean. 
+        </p>
+        <div class="tags">
+          <span class="tag tag-engine">Raylib</span>
+          <span class="tag tag-language">C++</span>
+          <span class="tag tag-genre">Visualizers</span>
+          <span class="tag tag-genre">2D</span>
+          <a href="https://github.com/sfritzon/Algorithms-and-DataStructures-Assignment.git" target="_blank" rel="noopener" class="tag tag-genre">
+        </div>
+      </div>
+    </article>
+
+    <!-- ─── PROJECT 4 ─── -->
+    <article class="project-card fade-in">
+      <div class="project-media">
+        <div class="carousel" data-index="0">
+          <span class="gif-badge">GIF</span>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <div class="placeholder">
+                <span class="placeholder-icon">🎮</span>
+                <span>gameplay.gif</span>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="placeholder">
+                <span class="placeholder-icon">🎮</span>
+                <span>screenshot2.gif</span>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="placeholder">
+                <span class="placeholder-icon">🎮</span>
+                <span>screenshot3.gif</span>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+      <div class="project-info">
+        <span class="project-number">04</span>
+        <h2 class="project-title">AI-Programming</h2>
+        <p class="project-about">
+         Based on an AI-programming course to make AIs patrol, react when they see the player and chase the player.
+        </p>
+        <p class="project-details">
+          Built only with Blueprints, this 1 month course focused on building a patrolling system using a Blackboard, a behavior tree and blueprints. The AI guard will patrol the scene, react when they see the player, alert the other guard and then chase the player.
+          The AIs use hearing perception and sight perception, never both at the same time. 
         </p>
         <div class="tags">
           <span class="tag tag-engine">Unreal</span>
-          <span class="tag tag-language">C++</span>
           <span class="tag tag-language">Blueprints</span>
-          <span class="tag tag-genre">Narrative</span>
+          <span class="tag tag-genre">AI-Programming</span>
           <span class="tag tag-genre">3D</span>
+          <a href="https://github.com/sfritzon/Unreal-AI-Programming.git" target="_blank" rel="noopener" class="tag tag-genre">
+        </div>
+      </div>
+    </article>
+
+            <!-- ─── PROJECT 5 ─── -->
+    <article class="project-card fade-in">
+      <div class="project-media">
+        <div class="carousel" data-index="0">
+          <span class="gif-badge">GIF</span>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <div class="placeholder">
+                <span class="placeholder-icon">🎮</span>
+                <span>gameplay.gif</span>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="placeholder">
+                <span class="placeholder-icon">🎮</span>
+                <span>screenshot2.gif</span>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <div class="placeholder">
+                <span class="placeholder-icon">🎮</span>
+                <span>screenshot3.gif</span>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+      <div class="project-info">
+        <span class="project-number">05</span>
+        <h2 class="project-title">Pong</h2>
+        <p class="project-about">
+         Not a new take on Pong, but a Pong built with my own vector library and Unity.
+        </p>
+        <p class="project-details">
+          This project is a bridge between C# and C++. Before going full on C++, we had an assignment where we took our previous knowledge of C# and very basic knowledge of C++ and built a vector library using C++ and the actual game using C#. 
+          The vector library connects to Unity by using it as a plugin. The actual game was written with C#. The UI and graphics were all written with code instead of using Unity's own UI tool. 
+        </p>
+        <div class="tags">
+          <span class="tag tag-engine">Unity</span>
+          <span class="tag tag-language">C#</span>
+          <span class="tag tag-language">C++</span>
+          <span class="tag tag-genre">Arcade</span>
+          <span class="tag tag-genre">2D</span>
+          <a href="https://github.com/sfritzon/PongWithVectormath.git" target="_blank" rel="noopener" class="tag tag-genre">
         </div>
       </div>
     </article>
@@ -770,42 +872,30 @@
 
   <!-- EDUCATION -->
   <section id="education">
-    <p class="section-label">Education</p>
+    <p class="section-label">Experience</p>
     <div class="edu-grid">
       <div class="edu-sidebar">
         <h2 class="edu-sidebar-title">My<br /><span>Back&shy;ground</span></h2>
-        <p class="edu-sidebar-sub">Academic & self-directed</p>
+        <p class="edu-sidebar-sub">Relevant academic education & career</p>
       </div>
       <div class="edu-entries">
 
         <div class="edu-entry fade-in">
-          <p class="edu-degree">BSc Game Development</p>
-          <p class="edu-school">University Name · City</p>
-          <p class="edu-period">2021 – 2024</p>
+          <p class="edu-degree">Game Programming</p>
+          <p class="edu-school">Forsbergs · Stockholm</p>
+          <p class="edu-period">2025 – ongoing</p>
           <p class="edu-desc">
-            Covered game engine architecture, real-time graphics, AI for games, and
-            project-based team development. Graduated with distinction.
-            Final thesis on procedural world generation.
+            Ongoing Game Programming course that will finish September 2027. The course focuses on learning C#, Unity, C++, Unreal Engine and a mobile games course. As programmers we are focused on learning good coding skills, but since there are no designers, producers or artists 
+            we also animate, plan and design our games as well.
           </p>
         </div>
 
         <div class="edu-entry fade-in">
-          <p class="edu-degree">Game Design Fundamentals</p>
-          <p class="edu-school">Online — Coursera / CGMA / etc.</p>
+          <p class="edu-degree">Senior Global Production Manager</p>
+          <p class="edu-school">Spotify · Stockholm</p>
           <p class="edu-period">2020</p>
           <p class="edu-desc">
-            Self-directed coursework covering level design theory, UX for games,
-            and rapid prototyping techniques.
-          </p>
-        </div>
-
-        <div class="edu-entry fade-in">
-          <p class="edu-degree">High School Diploma</p>
-          <p class="edu-school">School Name · City</p>
-          <p class="edu-period">2018 – 2021</p>
-          <p class="edu-desc">
-            Specialisation in natural sciences and mathematics. First programming
-            experience with Python and small hobby games in GameMaker.
+             Headed up Spotify's internal production team that built stages, live broadcasting systems, made video series and supported internal communication. Check out my linkedin for more info. 
           </p>
         </div>
 
@@ -815,11 +905,13 @@
 
   <!-- FOOTER -->
   <footer>
-    <span>© 2026 Your Name</span>
+    <span>© 2026 Sara Fritzon</span>
     <span>
-      <a href="mailto:you@example.com">you@example.com</a>
+      <a href="mailto:you@example.com">sara.fritzon@student.forsbergsskola.se</a>
       &nbsp;·&nbsp;
-      <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/sfritzon" target="_blank" rel="noopener">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/sfritzon/" target="_blank" rel="noopener">Linkedin</a>
     </span>
   </footer>
 
