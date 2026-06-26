@@ -93,7 +93,6 @@
       pointer-events: none;
     }
 
-    /* Subtle scanline texture */
     .hero::after {
       content: '';
       position: absolute;
@@ -193,7 +192,7 @@
 
     .project-card:last-child { border-bottom: 1px solid var(--border); }
 
-    /* Alternating layout */
+    /* Alternating layout - even cards swap media/info positions */
     .project-card:nth-child(even) .project-media { order: 2; }
     .project-card:nth-child(even) .project-info  { order: 1; }
 
@@ -253,7 +252,6 @@
       align-items: center;
       justify-content: center;
       gap: 0.6rem;
-      background-color: #111;
       background: repeating-linear-gradient(
         45deg,
         #111 0px,
@@ -362,7 +360,6 @@
       letter-spacing: 0.04em;
       line-height: 1;
       color: var(--text);
-      text-decoration: none;
     }
 
     .project-about {
@@ -370,7 +367,6 @@
       color: var(--muted);
       line-height: 1.75;
       font-weight: 300;
-      text-decoration: none !important;
     }
 
     .project-details {
@@ -379,14 +375,25 @@
       line-height: 1.7;
       border-left: 2px solid var(--orange);
       padding-left: 1rem;
-      text-decoration: none !important;
     }
 
-    /* ── Tags ── */
+    /* Prevent ANY accidental links from appearing on text */
+    .project-info p,
+    .project-info h2,
+    .project-info span {
+      pointer-events: none;
+    }
+
     .tags {
+      pointer-events: auto; /* Allow clicking tags only */
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
+    }
+
+    /* All non-link tags - not clickable */
+    .tag:not(.tag-github) {
+      cursor: default;
     }
 
     .tag {
@@ -397,7 +404,6 @@
       padding: 4px 10px;
       border-radius: 2px;
       border: 1px solid;
-      cursor: default;
     }
 
     .tag-engine {
@@ -418,19 +424,28 @@
       background: rgba(255,255,255,0.04);
     }
 
-    /* Link tags behave differently */
-    .tag-tag-github {
-      cursor: pointer;
+    /* GitHub tag - THIS IS THE CLICKABLE ONE */
+    .tag-github {
+      color: var(--orange);
+      border-color: rgba(255,107,26,0.5);
+      background: rgba(255,107,26,0.06);
       text-decoration: none !important;
+      cursor: pointer;
     }
 
-    .tag-tag-github:hover {
-      background: rgba(255,107,26,0.2);
-      border-color: var(--orange);
+    .tag-github:hover {
+      background: rgba(255,107,26,0.15);
     }
 
-    .tag:hover:not(.tag-tag-github) {
-      background: rgba(255,107,26,0.12);
+    /* Text decoration prevention */
+    .project-about,
+    .project-details,
+    .edu-desc,
+    .project-title,
+    .edu-degree,
+    .edu-school,
+    .edu-period {
+      text-decoration: none !important;
     }
 
     /* ── Education ── */
@@ -517,7 +532,6 @@
       font-size: 1.4rem;
       letter-spacing: 0.05em;
       color: var(--text);
-      text-decoration: none;
     }
 
     .edu-school {
@@ -525,7 +539,6 @@
       color: var(--orange);
       font-weight: 500;
       margin: 0.15rem 0;
-      text-decoration: none !important;
     }
 
     .edu-period {
@@ -533,7 +546,6 @@
       color: var(--muted);
       letter-spacing: 0.08em;
       margin-bottom: 0.6rem;
-      text-decoration: none !important;
     }
 
     .edu-desc {
@@ -541,7 +553,6 @@
       color: var(--muted);
       line-height: 1.7;
       font-weight: 300;
-      text-decoration: none !important;
     }
 
     /* ── Footer ── */
@@ -558,11 +569,7 @@
 
     footer a {
       color: var(--orange);
-      text-decoration: none !important;
-    }
-
-    footer a:hover {
-      color: var(--orange);
+      text-decoration: none;
     }
 
     /* ── Responsive ── */
@@ -645,34 +652,6 @@
 
     <!-- ─── PROJECT 1 ─── -->
     <article class="project-card fade-in">
-      <div class="project-media">
-        <div class="carousel" data-index="0">
-          <span class="gif-badge">GIF</span>
-          <div class="carousel-track">
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>gameplay.gif</span>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>screenshot2.gif</span>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>screenshot3.gif</span>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
-          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
-          <div class="carousel-dots"></div>
-        </div>
-      </div>
       <div class="project-info">
         <span class="project-number">01</span>
         <h2 class="project-title">Zomlib Madness</h2>
@@ -691,8 +670,20 @@
           <a href="https://github.com/sfritzon/RaylibZombieGame.git" 
              target="_blank" 
              rel="noopener" 
-             class="tag tag-tag-github"
-             aria-label="View on GitHub">GitHub</a>
+             class="tag tag-github">GITHUB →</a>
+        </div>
+      </div>
+      <div class="project-media">
+        <div class="carousel" data-index="0">
+          <span class="gif-badge">GIF</span>
+          <div class="carousel-track">
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>gameplay.gif</span></div></div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>screenshot2.gif</span></div></div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>screenshot3.gif</span></div></div>
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+          <div class="carousel-dots"></div>
         </div>
       </div>
     </article>
@@ -703,18 +694,8 @@
         <div class="carousel" data-index="0">
           <span class="gif-badge">GIF</span>
           <div class="carousel-track">
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>gameplay.gif</span>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>screenshot2.gif</span>
-              </div>
-            </div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>gameplay.gif</span></div></div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>screenshot2.gif</span></div></div>
           </div>
           <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
           <button class="carousel-btn next" aria-label="Next">&#8594;</button>
@@ -728,7 +709,7 @@
           An escape room type of game where our main protagonist Fred tries to escape from a cursed mall that also happens to be his workplace. 
         </p>
         <p class="project-details">
-          Ongoing school project where I am building interaction systems and a reactive narrative trigger system with C++. Where are two system designers helping to build tools for our Blueprint programmers.
+          Ongoing school project where I am building interaction systems and a reactive narrative trigger system with C++. There are two system designers helping to build tools for Blueprint programmers.
           I also made the current audio effects, melody that plays during a puzzle solve and audio triggers. 
         </p>
         <div class="tags">
@@ -740,42 +721,13 @@
           <a href="https://github.com/Forsbergs-Skola/Freds-Escape.git" 
              target="_blank" 
              rel="noopener" 
-             class="tag tag-tag-github"
-             aria-label="View on GitHub">GitHub</a>
+             class="tag tag-github">GITHUB →</a>
         </div>
       </div>
     </article>
 
-       <!-- ─── PROJECT 3 ─── -->
+    <!-- ─── PROJECT 3 ─── -->
     <article class="project-card fade-in">
-      <div class="project-media">
-        <div class="carousel" data-index="0">
-          <span class="gif-badge">GIF</span>
-          <div class="carousel-track">
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>gameplay.gif</span>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>screenshot2.gif</span>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>screenshot3.gif</span>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
-          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
-          <div class="carousel-dots"></div>
-        </div>
-      </div>
       <div class="project-info">
         <span class="project-number">03</span>
         <h2 class="project-title">Mouse Maze</h2>
@@ -795,8 +747,20 @@
           <a href="https://github.com/sfritzon/Algorithms-and-DataStructures-Assignment.git" 
              target="_blank" 
              rel="noopener" 
-             class="tag tag-tag-github"
-             aria-label="View on GitHub">GitHub</a>
+             class="tag tag-github">GITHUB →</a>
+        </div>
+      </div>
+      <div class="project-media">
+        <div class="carousel" data-index="0">
+          <span class="gif-badge">GIF</span>
+          <div class="carousel-track">
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>gameplay.gif</span></div></div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>screenshot2.gif</span></div></div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>screenshot3.gif</span></div></div>
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+          <div class="carousel-dots"></div>
         </div>
       </div>
     </article>
@@ -807,24 +771,9 @@
         <div class="carousel" data-index="0">
           <span class="gif-badge">GIF</span>
           <div class="carousel-track">
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>gameplay.gif</span>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>screenshot2.gif</span>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>screenshot3.gif</span>
-              </div>
-            </div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>gameplay.gif</span></div></div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>screenshot2.gif</span></div></div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>screenshot3.gif</span></div></div>
           </div>
           <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
           <button class="carousel-btn next" aria-label="Next">&#8594;</button>
@@ -849,42 +798,13 @@
           <a href="https://github.com/sfritzon/Unreal-AI-Programming.git" 
              target="_blank" 
              rel="noopener" 
-             class="tag tag-tag-github"
-             aria-label="View on GitHub">GitHub</a>
+             class="tag tag-github">GITHUB →</a>
         </div>
       </div>
     </article>
 
-            <!-- ─── PROJECT 5 ─── -->
+    <!-- ─── PROJECT 5 ─── -->
     <article class="project-card fade-in">
-      <div class="project-media">
-        <div class="carousel" data-index="0">
-          <span class="gif-badge">GIF</span>
-          <div class="carousel-track">
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>gameplay.gif</span>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>screenshot2.gif</span>
-              </div>
-            </div>
-            <div class="carousel-slide">
-              <div class="placeholder">
-                <span class="placeholder-icon">🎮</span>
-                <span>screenshot3.gif</span>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
-          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
-          <div class="carousel-dots"></div>
-        </div>
-      </div>
       <div class="project-info">
         <span class="project-number">05</span>
         <h2 class="project-title">Pong</h2>
@@ -904,8 +824,20 @@
           <a href="https://github.com/sfritzon/PongWithVectormath.git" 
              target="_blank" 
              rel="noopener" 
-             class="tag tag-tag-github"
-             aria-label="View on GitHub">GitHub</a>
+             class="tag tag-github">GITHUB →</a>
+        </div>
+      </div>
+      <div class="project-media">
+        <div class="carousel" data-index="0">
+          <span class="gif-badge">GIF</span>
+          <div class="carousel-track">
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>gameplay.gif</span></div></div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>screenshot2.gif</span></div></div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>screenshot3.gif</span></div></div>
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+          <div class="carousel-dots"></div>
         </div>
       </div>
     </article>
@@ -958,7 +890,6 @@
   </footer>
 
   <script>
-    /* ── Carousels ── */
     document.querySelectorAll('.carousel').forEach(carousel => {
       const track  = carousel.querySelector('.carousel-track');
       const slides = carousel.querySelectorAll('.carousel-slide');
@@ -969,7 +900,6 @@
       let current = 0;
       const total = slides.length;
 
-      /* Build dots */
       slides.forEach((_, i) => {
         const dot = document.createElement('button');
         dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
@@ -989,13 +919,11 @@
       prevBtn.addEventListener('click', () => goTo(current - 1));
       nextBtn.addEventListener('click', () => goTo(current + 1));
 
-      /* Keyboard */
       carousel.addEventListener('keydown', e => {
         if (e.key === 'ArrowLeft')  goTo(current - 1);
         if (e.key === 'ArrowRight') goTo(current + 1);
       });
 
-      /* Touch swipe */
       let startX = 0;
       carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
       carousel.addEventListener('touchend', e => {
@@ -1003,7 +931,6 @@
         if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
       });
 
-      /* Hide prev/next if only one slide */
       if (total <= 1) {
         prevBtn.style.display = 'none';
         nextBtn.style.display = 'none';
@@ -1011,7 +938,6 @@
       }
     });
 
-    /* ── Scroll fade-in ── */
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) {
