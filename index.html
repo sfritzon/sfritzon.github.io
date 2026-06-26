@@ -68,10 +68,9 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       transition: color 0.2s;
-      text-decoration: none;
     }
 
-    .nav-links a:hover { color: var(--orange); text-decoration: none; }
+    .nav-links a:hover { color: var(--orange); }
 
     /* ── Hero ── */
     .hero {
@@ -254,6 +253,7 @@
       align-items: center;
       justify-content: center;
       gap: 0.6rem;
+      background-color: #111;
       background: repeating-linear-gradient(
         45deg,
         #111 0px,
@@ -362,6 +362,7 @@
       letter-spacing: 0.04em;
       line-height: 1;
       color: var(--text);
+      text-decoration: none;
     }
 
     .project-about {
@@ -369,7 +370,7 @@
       color: var(--muted);
       line-height: 1.75;
       font-weight: 300;
-      text-decoration: none;
+      text-decoration: none !important;
     }
 
     .project-details {
@@ -378,7 +379,7 @@
       line-height: 1.7;
       border-left: 2px solid var(--orange);
       padding-left: 1rem;
-      text-decoration: none;
+      text-decoration: none !important;
     }
 
     /* ── Tags ── */
@@ -396,7 +397,7 @@
       padding: 4px 10px;
       border-radius: 2px;
       border: 1px solid;
-      text-decoration: none;
+      cursor: default;
     }
 
     .tag-engine {
@@ -417,7 +418,18 @@
       background: rgba(255,255,255,0.04);
     }
 
-    .tag:hover {
+    /* Link tags behave differently */
+    .tag-tag-github {
+      cursor: pointer;
+      text-decoration: none !important;
+    }
+
+    .tag-tag-github:hover {
+      background: rgba(255,107,26,0.2);
+      border-color: var(--orange);
+    }
+
+    .tag:hover:not(.tag-tag-github) {
       background: rgba(255,107,26,0.12);
     }
 
@@ -513,7 +525,7 @@
       color: var(--orange);
       font-weight: 500;
       margin: 0.15rem 0;
-      text-decoration: none;
+      text-decoration: none !important;
     }
 
     .edu-period {
@@ -521,7 +533,7 @@
       color: var(--muted);
       letter-spacing: 0.08em;
       margin-bottom: 0.6rem;
-      text-decoration: none;
+      text-decoration: none !important;
     }
 
     .edu-desc {
@@ -529,7 +541,7 @@
       color: var(--muted);
       line-height: 1.7;
       font-weight: 300;
-      text-decoration: none;
+      text-decoration: none !important;
     }
 
     /* ── Footer ── */
@@ -546,8 +558,11 @@
 
     footer a {
       color: var(--orange);
-      text-decoration: none;
-      text-decoration: none;
+      text-decoration: none !important;
+    }
+
+    footer a:hover {
+      color: var(--orange);
     }
 
     /* ── Responsive ── */
@@ -620,7 +635,7 @@
     </p>
     <div class="hero-scroll">
       <span class="hero-scroll-line"></span>
-      Scroll to explore to explore my work
+      Scroll to explore my work
     </div>
   </section>
 
@@ -635,7 +650,6 @@
           <span class="gif-badge">GIF</span>
           <div class="carousel-track">
             <div class="carousel-slide">
-              <!-- Replace src with your actual gif/image paths -->
               <div class="placeholder">
                 <span class="placeholder-icon">🎮</span>
                 <span>gameplay.gif</span>
@@ -668,14 +682,17 @@
         <p class="project-details">
           Built in 1 month as part of a Design Pattern course. The game graphics drawn directly in Raylib, sound effects, background music and UI built from scratch.
           The design patterns I chose to feature are State Patterns and Singleton Patterns. 
-                                                                                                                                                                                  
         </p>
         <div class="tags">
           <span class="tag tag-engine">Raylib</span>
           <span class="tag tag-language">C++</span>
           <span class="tag tag-genre">Survivor</span>
           <span class="tag tag-genre">2D</span>
-          <a href="https://github.com/sfritzon/RaylibZombieGame.git" target="_blank" rel="noopener" class="tag tag-genre"</a>
+          <a href="https://github.com/sfritzon/RaylibZombieGame.git" 
+             target="_blank" 
+             rel="noopener" 
+             class="tag tag-tag-github"
+             aria-label="View on GitHub">GitHub</a>
         </div>
       </div>
     </article>
@@ -720,7 +737,11 @@
           <span class="tag tag-language">Blueprint</span>
           <span class="tag tag-genre">Escape Room</span>
           <span class="tag tag-genre">First Person</span>
-          <a href="https://github.com/Forsbergs-Skola/Freds-Escape.git" target="_blank" rel="noopener" class="tag tag-genre"</a>
+          <a href="https://github.com/Forsbergs-Skola/Freds-Escape.git" 
+             target="_blank" 
+             rel="noopener" 
+             class="tag tag-tag-github"
+             aria-label="View on GitHub">GitHub</a>
         </div>
       </div>
     </article>
@@ -771,7 +792,11 @@
           <span class="tag tag-language">C++</span>
           <span class="tag tag-genre">Visualizers</span>
           <span class="tag tag-genre">2D</span>
-          <a href="https://github.com/sfritzon/Algorithms-and-DataStructures-Assignment.git" target="_blank" rel="noopener" class="tag tag-genre"</a>
+          <a href="https://github.com/sfritzon/Algorithms-and-DataStructures-Assignment.git" 
+             target="_blank" 
+             rel="noopener" 
+             class="tag tag-tag-github"
+             aria-label="View on GitHub">GitHub</a>
         </div>
       </div>
     </article>
@@ -821,7 +846,11 @@
           <span class="tag tag-language">Blueprints</span>
           <span class="tag tag-genre">AI-Programming</span>
           <span class="tag tag-genre">3D</span>
-          <a href="https://github.com/sfritzon/Unreal-AI-Programming.git" target="_blank" rel="noopener" class="tag tag-genre"</a>
+          <a href="https://github.com/sfritzon/Unreal-AI-Programming.git" 
+             target="_blank" 
+             rel="noopener" 
+             class="tag tag-tag-github"
+             aria-label="View on GitHub">GitHub</a>
         </div>
       </div>
     </article>
@@ -872,7 +901,11 @@
           <span class="tag tag-language">C++</span>
           <span class="tag tag-genre">Arcade</span>
           <span class="tag tag-genre">2D</span>
-          <a href="https://github.com/sfritzon/PongWithVectormath.git" target="_blank" rel="noopener" class="tag tag-genre"</a>
+          <a href="https://github.com/sfritzon/PongWithVectormath.git" 
+             target="_blank" 
+             rel="noopener" 
+             class="tag tag-tag-github"
+             aria-label="View on GitHub">GitHub</a>
         </div>
       </div>
     </article>
@@ -916,7 +949,7 @@
   <footer>
     <span>© 2026 Sara Fritzon</span>
     <span>
-      <a href="mailto:you@example.com">sara.fritzon@student.forsbergsskola.se</a>
+      <a href="mailto:sara.fritzon@student.forsbergsskola.se">sara.fritzon@student.forsbergsskola.se</a>
       &nbsp;·&nbsp;
       <a href="https://github.com/sfritzon" target="_blank" rel="noopener">GitHub</a>
       &nbsp;·&nbsp;
