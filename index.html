@@ -76,8 +76,10 @@
     .hero {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4rem;
       padding: 8rem 2.5rem 4rem;
       position: relative;
       overflow: hidden;
@@ -105,6 +107,14 @@
         rgba(255,255,255,0.012) 4px
       );
       pointer-events: none;
+    }
+
+    .hero-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-eyebrow {
@@ -155,6 +165,21 @@
       background: var(--orange);
     }
 
+    /* Hero image */
+    .hero-image {
+      flex: 0 0 400px;
+      height: 520px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     /* ── Section label ── */
     .section-label {
       font-size: 0.72rem;
@@ -163,7 +188,7 @@
       text-transform: uppercase;
       color: var(--orange);
       margin-bottom: 3.5rem;
-      padding-left: 2.5rem;
+      padding-left: 0;
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -179,7 +204,7 @@
     }
 
     /* ── Projects ── */
-    #projects { padding: 6rem 0; }
+    #projects { padding: 6rem 2.5rem; }
 
     .project-card {
       display: grid;
@@ -192,11 +217,9 @@
 
     .project-card:last-child { border-bottom: 1px solid var(--border); }
 
-    /* Alternating layout - even cards swap media/info positions */
     .project-card:nth-child(even) .project-media { order: 2; }
     .project-card:nth-child(even) .project-info  { order: 1; }
 
-    /* Hover glow */
     .project-card::before {
       content: '';
       position: absolute;
@@ -242,7 +265,6 @@
       display: block;
     }
 
-    /* Placeholder for missing images */
     .carousel-slide .placeholder {
       width: 100%;
       height: 100%;
@@ -321,7 +343,6 @@
       transform: scaleX(1.6);
     }
 
-    /* GIF badge */
     .gif-badge {
       position: absolute;
       top: 12px;
@@ -377,7 +398,6 @@
       padding-left: 1rem;
     }
 
-    /* Prevent ANY accidental links from appearing on text */
     .project-info p,
     .project-info h2,
     .project-info span {
@@ -385,16 +405,13 @@
     }
 
     .tags {
-      pointer-events: auto; /* Allow clicking tags only */
+      pointer-events: auto;
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
     }
 
-    /* All non-link tags - not clickable */
-    .tag:not(.tag-github) {
-      cursor: default;
-    }
+    .tag:not(.tag-github) { cursor: default; }
 
     .tag {
       font-size: 0.72rem;
@@ -424,7 +441,6 @@
       background: rgba(255,255,255,0.04);
     }
 
-    /* GitHub tag - THIS IS THE CLICKABLE ONE */
     .tag-github {
       color: var(--orange);
       border-color: rgba(255,107,26,0.5);
@@ -433,11 +449,8 @@
       cursor: pointer;
     }
 
-    .tag-github:hover {
-      background: rgba(255,107,26,0.15);
-    }
+    .tag-github:hover { background: rgba(255,107,26,0.15); }
 
-    /* Text decoration prevention */
     .project-about,
     .project-details,
     .edu-desc,
@@ -469,9 +482,9 @@
 
     .edu-grid {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 280px 1fr 320px;
       gap: 4rem;
-      max-width: 900px;
+      max-width: 1200px;
     }
 
     .edu-sidebar {
@@ -555,6 +568,19 @@
       font-weight: 300;
     }
 
+    /* Education photo */
+    .edu-image {
+      height: 100%;
+      min-height: 320px;
+    }
+
+    .edu-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     /* ── Footer ── */
     footer {
       padding: 2rem 2.5rem;
@@ -577,11 +603,19 @@
       nav { padding: 1rem 1.2rem; }
       .nav-links { gap: 1.2rem; }
 
-      .hero { padding: 7rem 1.5rem 3rem; }
-
-      .project-card {
-        grid-template-columns: 1fr;
+      .hero {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 7rem 1.5rem 3rem;
       }
+
+      .hero-image {
+        flex: none;
+        width: 100%;
+        height: 280px;
+      }
+
+      .project-card { grid-template-columns: 1fr; }
 
       .project-card:nth-child(even) .project-media,
       .project-card:nth-child(even) .project-info { order: unset; }
@@ -590,14 +624,12 @@
 
       .project-info { padding: 2rem 1.5rem; }
 
-      .edu-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
+      .edu-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .edu-image { height: 280px; }
 
       #education { padding: 4rem 1.5rem 3rem; }
 
-      .section-label { padding-left: 1.5rem; }
+      #projects { padding: 6rem 1.5rem; }
     }
 
     /* ── Scroll fade-in ── */
@@ -632,17 +664,24 @@
 
   <!-- HERO -->
   <section class="hero">
-    <p class="hero-eyebrow">Game Programmer</p>
-    <h1 class="hero-title">
-      I Build<br />
-      <span>Games</span>
-    </h1>
-    <p class="hero-subtitle">
-      I am a game programming student with a passion for building flexible systems and tools for designers. I bring the 18+ years of AV/video and live event production experience I have with me when thinking of solutions to gameplay, game systems and programming. 
-    </p>
-    <div class="hero-scroll">
-      <span class="hero-scroll-line"></span>
-      Scroll down to explore my work
+    <div class="hero-text">
+      <p class="hero-eyebrow">Game Programmer</p>
+      <h1 class="hero-title">
+        I Build<br />
+        <span>Games</span>
+      </h1>
+      <p class="hero-subtitle">
+        I am a game programming student with a passion for building flexible systems and tools for designers. I bring the 18+ years of AV/video and live event production experience I have with me when thinking of solutions to gameplay, game systems and programming.
+      </p>
+      <div class="hero-scroll">
+        <span class="hero-scroll-line"></span>
+        Scroll down to explore my work
+      </div>
+    </div>
+
+    <!-- ↓ Replace "images/hero-photo.jpg" with your actual filename -->
+    <div class="hero-image">
+      <img src="images/hero-photo.jpg" alt="Sara Fritzon" />
     </div>
   </section>
 
@@ -651,48 +690,48 @@
     <p class="section-label">Selected Work</p>
 
     <!-- ─── PROJECT 1 ─── -->
-<article class="project-card fade-in">
-  <div class="project-info">
-    <span class="project-number">01</span>
-    <h2 class="project-title">Zombie Arena</h2>
-    <p class="project-about">
-      A vampire-survivor-like game where you fight against small round Zombies and bigger Tanks before time runs out. An ongoing project.
-    </p>
-    <p class="project-details">
-      Built in 1 month as part of a Design Pattern course. The game graphics drawn directly in Raylib, sound effects, background music and UI built from scratch.
-      The design patterns I chose to feature are State Patterns and Singleton Patterns. When you lose health you also lose pixels. Kill as many zombies as you can while collecting health packs to restore health and pixels.
-      Collect occasional time boosters for extra time.
-    </p>
-    <div class="tags">
-      <span class="tag tag-engine">Raylib</span>
-      <span class="tag tag-language">C++</span>
-      <span class="tag tag-genre">Survivor</span>
-      <span class="tag tag-genre">2D</span>
-      <a href="https://github.com/sfritzon/RaylibZombieGame.git" 
-         target="_blank" 
-         rel="noopener" 
-         class="tag tag-github">GITHUB →</a>
-    </div>
-  </div>
-  <div class="project-media">
-   <div class="carousel" data-index="0">
-  <span class="gif-badge">GIF</span>
-  <div class="carousel-track">
-    <div class="carousel-slide">
-      <img src="images/zombie_startscreen.gif" alt="Zombie Arena Main Menu" />
-    </div>
-    <div class="carousel-slide">
-      <img src="images/shooting.gif" alt="Zombie Arena gameplay" />
-    </div>
-    <div class="carousel-slide">
-      <img src="images/gameover.gif" alt="Zombie Arena game over" />
-    </div>
-  </div>
-  <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
-  <button class="carousel-btn next" aria-label="Next">&#8594;</button>
-  <div class="carousel-dots"></div>
-</div>
-</article>
+    <article class="project-card fade-in">
+      <div class="project-info">
+        <span class="project-number">01</span>
+        <h2 class="project-title">Zombie Arena</h2>
+        <p class="project-about">
+          A vampire-survivor-like game where you fight against small round Zombies and bigger Tanks before time runs out. An ongoing project.
+        </p>
+        <p class="project-details">
+          Built in 1 month as part of a Design Pattern course. The game graphics drawn directly in Raylib, sound effects, background music and UI built from scratch.
+          The design patterns I chose to feature are State Patterns and Singleton Patterns.
+        </p>
+        <div class="tags">
+          <span class="tag tag-engine">Raylib</span>
+          <span class="tag tag-language">C++</span>
+          <span class="tag tag-genre">Survivor</span>
+          <span class="tag tag-genre">2D</span>
+          <a href="https://github.com/sfritzon/RaylibZombieGame.git"
+             target="_blank"
+             rel="noopener"
+             class="tag tag-github">GITHUB →</a>
+        </div>
+      </div>
+      <div class="project-media">
+        <div class="carousel" data-index="0">
+          <span class="gif-badge">GIF</span>
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <img src="images/zombie_startscreen.gif" alt="Zombie Arena start screen" />
+            </div>
+            <div class="carousel-slide">
+              <img src="images/shooting.gif" alt="Zombie Arena shooting gameplay" />
+            </div>
+            <div class="carousel-slide">
+              <img src="images/gameover.gif" alt="Zombie Arena game over screen" />
+            </div>
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+    </article>
 
     <!-- ─── PROJECT 2 ─── -->
     <article class="project-card fade-in">
@@ -712,11 +751,11 @@
         <span class="project-number">02</span>
         <h2 class="project-title">Fred's Escape</h2>
         <p class="project-about">
-          An escape room type of game where our main protagonist Fred tries to escape from a cursed mall that also happens to be his workplace. 
+          An escape room type of game where our main protagonist Fred tries to escape from a cursed mall that also happens to be his workplace.
         </p>
         <p class="project-details">
           Ongoing school project where I am building interaction systems and a reactive narrative trigger system with C++. There are two system designers helping to build tools for Blueprint programmers.
-          I also made the current audio effects, melody that plays during a puzzle solve and audio triggers. 
+          I also made the current audio effects, melody that plays during a puzzle solve and audio triggers.
         </p>
         <div class="tags">
           <span class="tag tag-engine">Unreal Engine 5</span>
@@ -724,9 +763,9 @@
           <span class="tag tag-language">Blueprint</span>
           <span class="tag tag-genre">Escape Room</span>
           <span class="tag tag-genre">First Person</span>
-          <a href="https://github.com/Forsbergs-Skola/Freds-Escape.git" 
-             target="_blank" 
-             rel="noopener" 
+          <a href="https://github.com/Forsbergs-Skola/Freds-Escape.git"
+             target="_blank"
+             rel="noopener"
              class="tag tag-github">GITHUB →</a>
         </div>
       </div>
@@ -738,43 +777,38 @@
         <span class="project-number">03</span>
         <h2 class="project-title">Mouse Maze</h2>
         <p class="project-about">
-         This little Mouse Maze simulation was built in 1,5 months during the Algorithms and Data Structures course. It also has sorting visualizers that you can toggle between.
+          This little Mouse Maze simulation was built in 1.5 months during the Algorithms and Data Structures course. It also has sorting visualizers that you can toggle between.
         </p>
         <p class="project-details">
-          Mouse Maze and Sorting Visualizer was built using C++ in Raylib with the purpose of having both in the same application and toggling between the two using a Main Menu. All the visual graphics are built directly in Raylib. 
-          The sorting algorithms used are Bubble Sort, Insertion Sort and Heap Sort and the Mouse Maze uses BFS, DFS and A+ as pathfinding alorithms. Both the Sorting Visualizer and Mouse Maze use a manager to handle the different options of algorithms and the App State
-          and AppManager handles the different states, keeping main.cpp lean. 
+          Mouse Maze and Sorting Visualizer was built using C++ in Raylib with the purpose of having both in the same application and toggling between the two using a Main Menu. All the visual graphics are built directly in Raylib.
+          The sorting algorithms used are Bubble Sort, Insertion Sort and Heap Sort and the Mouse Maze uses BFS, DFS and A* as pathfinding algorithms. Both the Sorting Visualizer and Mouse Maze use a manager to handle the different options of algorithms and the App State
+          and AppManager handles the different states, keeping main.cpp lean.
         </p>
         <div class="tags">
           <span class="tag tag-engine">Raylib</span>
           <span class="tag tag-language">C++</span>
           <span class="tag tag-genre">Visualizers</span>
           <span class="tag tag-genre">2D</span>
-          <a href="https://github.com/sfritzon/Algorithms-and-DataStructures-Assignment.git" 
-             target="_blank" 
-             rel="noopener" 
+          <a href="https://github.com/sfritzon/Algorithms-and-DataStructures-Assignment.git"
+             target="_blank"
+             rel="noopener"
              class="tag tag-github">GITHUB →</a>
-    </div>
-  </div>
-  <div class="project-media">
-   <div class="carousel" data-index="0">
-  <span class="gif-badge">GIF</span>
-  <div class="carousel-track">
-    <div class="carousel-slide">
-      <img src="images/visualizer/menu.gif" alt="Visualizer Main Menu" />
-    </div>
-    <div class="carousel-slide">
-      <img src="images/visualizer/visualizer.gif" alt="Sorting" />
-    </div>
-    <div class="carousel-slide">
-      <img src="images/visualizer/mouse.gif" alt="Mouse Maze" />
-    </div>
-  </div>
-  <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
-  <button class="carousel-btn next" aria-label="Next">&#8594;</button>
-  <div class="carousel-dots"></div>
-</div>
-</article>
+        </div>
+      </div>
+      <div class="project-media">
+        <div class="carousel" data-index="0">
+          <span class="gif-badge">GIF</span>
+          <div class="carousel-track">
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>gameplay.gif</span></div></div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>screenshot2.gif</span></div></div>
+            <div class="carousel-slide"><div class="placeholder"><span class="placeholder-icon">🎮</span><span>screenshot3.gif</span></div></div>
+          </div>
+          <button class="carousel-btn prev" aria-label="Previous">&#8592;</button>
+          <button class="carousel-btn next" aria-label="Next">&#8594;</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+    </article>
 
     <!-- ─── PROJECT 4 ─── -->
     <article class="project-card fade-in">
@@ -795,20 +829,20 @@
         <span class="project-number">04</span>
         <h2 class="project-title">AI-Programming</h2>
         <p class="project-about">
-         Based on an AI-programming course to make AIs patrol, react when they see the player and chase the player.
+          Based on an AI-programming course to make AIs patrol, react when they see the player and chase the player.
         </p>
         <p class="project-details">
           Built only with Blueprints, this 1 month course focused on building a patrolling system using a Blackboard, a behavior tree and blueprints. The AI guard will patrol the scene, react when they see the player, alert the other guard and then chase the player.
-          The AIs use hearing perception and sight perception, never both at the same time. 
+          The AIs use hearing perception and sight perception, never both at the same time.
         </p>
         <div class="tags">
           <span class="tag tag-engine">Unreal</span>
           <span class="tag tag-language">Blueprints</span>
           <span class="tag tag-genre">AI-Programming</span>
           <span class="tag tag-genre">3D</span>
-          <a href="https://github.com/sfritzon/Unreal-AI-Programming.git" 
-             target="_blank" 
-             rel="noopener" 
+          <a href="https://github.com/sfritzon/Unreal-AI-Programming.git"
+             target="_blank"
+             rel="noopener"
              class="tag tag-github">GITHUB →</a>
         </div>
       </div>
@@ -820,11 +854,11 @@
         <span class="project-number">05</span>
         <h2 class="project-title">Pong</h2>
         <p class="project-about">
-         Not a new take on Pong, but a Pong built with my own vector library and Unity.
+          Not a new take on Pong, but a Pong built with my own vector library and Unity.
         </p>
         <p class="project-details">
-          This project is a bridge between C# and C++. Before going full on C++, we had an assignment where we took our previous knowledge of C# and very basic knowledge of C++ and built a vector library using C++ and the actual game using C#. 
-          The vector library connects to Unity by using it as a plugin. The actual game was written with C#. The UI and graphics were all written with code instead of using Unity's own UI tool. 
+          This project is a bridge between C# and C++. Before going full on C++, we had an assignment where we took our previous knowledge of C# and very basic knowledge of C++ and built a vector library using C++ and the actual game using C#.
+          The vector library connects to Unity by using it as a plugin. The actual game was written with C#. The UI and graphics were all written with code instead of using Unity's own UI tool.
         </p>
         <div class="tags">
           <span class="tag tag-engine">Unity</span>
@@ -832,9 +866,9 @@
           <span class="tag tag-language">C++</span>
           <span class="tag tag-genre">Arcade</span>
           <span class="tag tag-genre">2D</span>
-          <a href="https://github.com/sfritzon/PongWithVectormath.git" 
-             target="_blank" 
-             rel="noopener" 
+          <a href="https://github.com/sfritzon/PongWithVectormath.git"
+             target="_blank"
+             rel="noopener"
              class="tag tag-github">GITHUB →</a>
         </div>
       </div>
@@ -859,18 +893,19 @@
   <section id="education">
     <p class="section-label">Experience</p>
     <div class="edu-grid">
+
       <div class="edu-sidebar">
         <h2 class="edu-sidebar-title">My<br /><span>Back&shy;ground</span></h2>
         <p class="edu-sidebar-sub">Relevant academic education & career</p>
       </div>
-      <div class="edu-entries">
 
+      <div class="edu-entries">
         <div class="edu-entry fade-in">
           <p class="edu-degree">Game Programming</p>
           <p class="edu-school">Forsbergs · Stockholm</p>
           <p class="edu-period">2025 – ongoing</p>
           <p class="edu-desc">
-            Ongoing Game Programming course that will finish September 2027. The course focuses on learning C#, Unity, C++, Unreal Engine and a mobile games course. As programmers we are focused on learning good coding skills, but since there are no designers, producers or artists 
+            Ongoing Game Programming course that will finish September 2027. The course focuses on learning C#, Unity, C++, Unreal Engine and a mobile games course. As programmers we are focused on learning good coding skills, but since there are no designers, producers or artists
             we also animate, plan and design our games as well.
           </p>
         </div>
@@ -880,11 +915,16 @@
           <p class="edu-school">Spotify · Stockholm</p>
           <p class="edu-period">2020</p>
           <p class="edu-desc">
-             Headed up Spotify's internal production team that built stages, live broadcasting systems, made video series and supported internal communication. Check out my linkedin for more info. 
+            Headed up Spotify's internal production team that built stages, live broadcasting systems, made video series and supported internal communication. Check out my LinkedIn for more info.
           </p>
         </div>
-
       </div>
+
+      <!-- ↓ Replace "images/about-photo.jpg" with your actual filename -->
+      <div class="edu-image">
+        <img src="images/about-photo.jpg" alt="Sara Fritzon" />
+      </div>
+
     </div>
   </section>
 
@@ -896,15 +936,15 @@
       &nbsp;·&nbsp;
       <a href="https://github.com/sfritzon" target="_blank" rel="noopener">GitHub</a>
       &nbsp;·&nbsp;
-      <a href="https://www.linkedin.com/in/sfritzon/" target="_blank" rel="noopener">Linkedin</a>
+      <a href="https://www.linkedin.com/in/sfritzon/" target="_blank" rel="noopener">LinkedIn</a>
     </span>
   </footer>
 
   <script>
     document.querySelectorAll('.carousel').forEach(carousel => {
-      const track  = carousel.querySelector('.carousel-track');
-      const slides = carousel.querySelectorAll('.carousel-slide');
-      const dotsEl = carousel.querySelector('.carousel-dots');
+      const track   = carousel.querySelector('.carousel-track');
+      const slides  = carousel.querySelectorAll('.carousel-slide');
+      const dotsEl  = carousel.querySelector('.carousel-dots');
       const prevBtn = carousel.querySelector('.carousel-btn.prev');
       const nextBtn = carousel.querySelector('.carousel-btn.next');
 
